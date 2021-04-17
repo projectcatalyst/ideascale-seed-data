@@ -44,24 +44,21 @@
 /*
   --- Suggested data model ---
 
-  Automated standardisation rules
-    - "Attachments" - If 'NO' then result is empty array for attachments data, otherwise the links are in a string with a comma and space.
-    - "Website/GitHub repository" - Search for github.com in the string, if so add to onlineAccounts JSON list, otherwise add as the proposal url.
-    - "Requested funds in USD. Only use numbers! No symbols, letters, fractions. Payment will be in ada." - If number then add as requested amount, if not add full string to field requestedAmountText.
-
-  Manual standardisation rules
-    - requestedFundsText - Take the string requested fund amount and extract the amount
+  Standardisation rules
+    - Empty strings - Santise empty string values and update to null
+    - Requested funds - If number then add as requested amount otherwise null. Add full string to field requestedAmountText.
+    - Date Time - Convert Date time to ISO format
+    - Attachments - Remove string 'NO' and replace with null
 
   Notes - From the data model below
     - Data likely to stay the same - (title, description, url, attachmentLinks, requestedAmount, createdAt) Proposals will likely always have this data in a similar data structure
     - Data most likely to change - (problemDescription, solutionDescription, relevantExperience, outcomeObjectives) This data could break into multiple fields and different formats over time
-    - Ideascale data in JSON - This Ideascale data has some value though is not essential to the proposal data. As a result it can be added as JSON
+    - Ideascale data in JSON - This Ideascale data has some value though is not essential to the proposal data. As a result it can be added as JSON in the new database
     - Ideascale id & url - There is value in allowing for the API having quicker access to the Ideascale id for search and the url for linking the proposal to the source
-    - Requested amount sanitisation - The requested amount will likely need to be sanitised manually as the data is given in string format that people could type anything into, there is high value in knowing this data
 
   Data model:
 */
-type Proposal1 = {
+interface Proposal1 {
   title: string // Title
   problemDescription: string // Details
   solutionDescription: string // Describe your solution to the problem
@@ -70,7 +67,7 @@ type Proposal1 = {
   description: string // Detailed plan (not required) - Fill in here any additional details
   url: string // Website/GitHub repository (not required) => Website
   createdAt: string // Date/Time
-  requestedAmount: number // Requested funds in USD. Only use numbers! No symbols, letters, fractions. Payment will be in ada.
+  requestedAmount: number // Requested funds in USD. Only use numbers! No symbols, letters, fractions. Payment will be in ada. => Converted to number or becomes null
   ideascaleId // Idea ID
   ideascaleUrl // URL
   ideascale: { // (stored as JSON)
@@ -79,7 +76,7 @@ type Proposal1 = {
     author: string // Author
     commentsTotal: number // Comments
     attachmentLinks: string // Attachments (list of all attachment urls provided as a string)
-    requestedAmountText: string // Used when requested amount is not a number
+    requestedAmountText: string // Stores the default value for the Requested funds
   }
 }
 

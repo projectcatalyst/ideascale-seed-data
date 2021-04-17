@@ -1,4 +1,4 @@
-type Proposal = {
+interface Proposal {
   // Data newly added to proposals to use on the website but also available to other projects
   id: string
   fundCategoryId: string // id for FundCategory data model
@@ -29,12 +29,12 @@ type Proposal = {
   }
 }
 
-type FundRound = {
+interface FundRound {
   id: string
   name: string // Fund 3
 }
 
-type FundCategory = {
+interface FundCategory {
   id: string
   fundRoundId: number
   name: string
