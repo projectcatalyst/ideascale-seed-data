@@ -80,7 +80,7 @@ const processData = async () => {
 
   // Apply requestedAmount processed data if its been completed
   try {
-    // Fund results data that was shared post release was applied manually to the proposals data
+    // Fund results data was applied manually to the standardised data
     const processedRequestedAmount = require('./processed/requested-amount.json')
 
     const processedMap = {}
@@ -103,8 +103,15 @@ const processData = async () => {
     seedDataList = standardisedList
   }
 
+  // Convert ADA to USD value
+  const adaUsdValue = 0.082 // Check /funds-and-challenges/README.md
+  const processedUsdDataList = seedDataList.map(proposal => ({
+    ...proposal,
+    requestedAmount: Math.round(proposal.requestedAmount * adaUsdValue)
+  }))
+
   await fsPromises
-    .writeFile('fund1-seed-data.json', JSON.stringify(seedDataList, null, 2))
+    .writeFile('fund1-seed-data.json', JSON.stringify(processedUsdDataList, null, 2))
     .then(() => console.log('Seed data saved successfully'))
     .catch(error => console.log('Error: ', error))
 }

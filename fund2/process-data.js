@@ -73,14 +73,31 @@ const processData = async () => {
     .then(() => console.log('Requires processing data successfully added'))
     .catch(error => console.log('Error: ', error))
 
+
+  const usdConvertedProcessingList = []
+
+  standardisedList.forEach(proposal => {
+    usdConvertedProcessingList.push({
+      ideascaleId: proposal.ideascaleId,
+      title: proposal.title,
+      requestedAmount: proposal.requestedAmount,
+      requestedAmountText: proposal.ideascale.requestedAmountText
+    })
+  })
+
+  await fsPromises
+    .writeFile('requires-processing/usd-converted-requested-amount.json', JSON.stringify(usdConvertedProcessingList, null, 2))
+    .then(() => console.log('Requires processing data successfully added'))
+    .catch(error => console.log('Error: ', error))
+
   // --- Step 3: Combine standardised data to create seed data ---
 
   let seedDataList = [] 
 
   // Apply requestedAmount processed data if its been completed
   try {
-    // Fund results data that was shared post release was applied manually to the proposals data
-    const processedRequestedAmount = require('./processed/requested-amount.json')
+    // Fund results data was applied manually to the standardised data
+    const processedRequestedAmount = require('./processed/usd-converted-requested-amount.json')
 
     const processedMap = {}
     for (const proposal of processedRequestedAmount) {

@@ -9,6 +9,8 @@
 - /fund/process-data.js - Script to standardise Ideascale data
 - /fund/fund-standardised.json => Standardised data using the process data script
 - /fund/fund-seed-data.json => Finalised seed data to use for the database
+- /funds-and-challenges/results - Fund results data in PDF format
+- /funds-and-challenges - Fund and challenges seed data
 
 **Standardisation Process**
 - Convert data to JSON format
@@ -19,7 +21,8 @@
 - Add in any required manual process where the script data can't standardise effectively
 - Run the script to produce the fund-seed-data.json file
 
-**Notes**
-- Comments - Comments data has been added for reference though this is not vital data to expose through the API. The comments data has been omitted from being standardised.
+**Important Notes**
+- USD Conversion - Fund 1 & 2 requested amount was given in ADA however this has been standardised to the equivalent USD value. The ADA to USD conversion values were taken from the fund results to make the conversions.
+- Comments - Comments data has been added for reference though this is not vital data to expose through the API. The comments data has been omitted from being standardised
 - Date/Time - Date/Time data from Ideascale is assumed to be UTC timezone
 - Detailed Plan - Markdown has not been removed from any of the text fields

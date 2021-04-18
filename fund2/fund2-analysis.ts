@@ -67,8 +67,8 @@ interface Proposal2 {
   url: string // Website/GitHub repository (not required) => Website
   createdAt: string // Date/Time
   requestedAmount: number // Requested funds in USD. Only use numbers! No symbols, letters, fractions. Payment will be in ada. => Converted to number or becomes null
-  ideascaleId // Idea ID
-  ideascaleUrl // URL
+  ideascaleId: string // Idea ID
+  ideascaleUrl: string // URL
   ideascale: { // (stored as JSON)
     stage: string // Stage
     ideaNumber: number // Idea Number

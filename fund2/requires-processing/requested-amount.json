@@ -1,17 +1,17 @@
 [
   {
     "ideascaleId": 324315,
-    "requestedAmount": null,
+    "requestedAmount": 0,
     "requestedAmountText": "10000 start up"
   },
   {
     "ideascaleId": 323886,
-    "requestedAmount": null,
+    "requestedAmount": 0,
     "requestedAmountText": "Required hardware and network configuration at cost spread over ,Fund2/Fund3, two separate funding rounds @ 100,000 ADA per round.  - 100,000 ADA"
   },
   {
     "ideascaleId": 323761,
-    "requestedAmount": null,
+    "requestedAmount": 0,
     "requestedAmountText": "340k Ada"
   }
 ]
