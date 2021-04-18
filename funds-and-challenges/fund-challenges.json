@@ -1,0 +1,32 @@
+[
+  {
+    "fundId": 1,
+    "name": "Fund 1 Challenge",
+    "fundingAmount": 200000,
+    "currency": "USD"
+  },
+  {
+    "fundId": 2,
+    "name": "Fund 2 Challenge",
+    "fundingAmount": 200000,
+    "currency": "USD"
+  },
+  {
+    "fundId": 3,
+    "name": "F3: DApp creation",
+    "fundingAmount": 250000,
+    "currency": "USD"
+  },
+  {
+    "fundId": 3,
+    "name": "F3: Developer Ecosystem",
+    "fundingAmount": 250000,
+    "currency": "USD"
+  },
+  {
+    "fundId": 3,    
+    "name": "F3: Community Choice",
+    "fundingAmount": 0,
+    "currency": "USD"
+  }
+]

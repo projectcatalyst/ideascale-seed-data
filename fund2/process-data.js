@@ -18,8 +18,8 @@ const processData = async () => {
 
     const requestedFunds = proposal['Requested funds in USD. Only use numbers! No symbols, letters, fractions. Payment will be in ada.']
     const parsedNumber = requestedFunds ? requestedFunds.replace(/\,|\s|\./g,'') : null
-    const requestedFundsNumber = parsedNumber && !isNaN(Number(parsedNumber)) ? parseInt(parsedNumber, 10) : null
-    const requestedAmount = !isNaN(requestedFundsNumber) ? requestedFundsNumber : null
+    const requestedFundsNumber = parsedNumber && !isNaN(Number(parsedNumber)) ? parseInt(parsedNumber, 10) : 0
+    const requestedAmount = !isNaN(requestedFundsNumber) ? requestedFundsNumber : 0
     const requestedAmountText = requestedFunds || null
 
     const attachmentLinks = proposal['Attachments'] === 'NO' ? null : proposal['Attachments']
@@ -79,6 +79,7 @@ const processData = async () => {
 
   // Apply requestedAmount processed data if its been completed
   try {
+    // Fund results data that was shared post release was applied manually to the proposals data
     const processedRequestedAmount = require('./processed/requested-amount.json')
 
     const processedMap = {}

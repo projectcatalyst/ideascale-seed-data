@@ -29,14 +29,14 @@ interface Proposal {
   }
 }
 
-interface FundRound {
+interface Fund {
   id: string
   name: string // Fund 3
 }
 
 interface FundCategory {
   id: string
-  fundRoundId: number
+  fundId: string
   name: string
   fundingAmount: number
   currency: string
